@@ -17,7 +17,7 @@ class PolynomialRegressor:
         print("Coeffs:>" + str(self.coeffs))
         print("Deg:>" + str(self.degree))
         print("Exps:>" + str(self.exponents))
-        self.lr = .01
+        self.lr = .0001
    
     def findCost(self):#mean squared error
         sum_sq_err = 0
@@ -62,7 +62,7 @@ class PolynomialRegressor:
     def updateCoeffs(self):
         for i in range(len(self.xs)):
             for j in range(len(self.coeffs)):
-                self.coeffs[j] = self.coeffs[j] - (self.lr*(self.calculate(self.xs[i]) - self.ys[i]))
+                self.coeffs[j] = self.coeffs[j] - ((self.lr*(self.calculate(self.xs[i]) - self.ys[i])*self.findSlope(self.xs[i]))/len(self.xs))
 
 
 
